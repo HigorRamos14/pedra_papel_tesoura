@@ -2,9 +2,10 @@ from tkinter import *
 import random
 
 class pptFunctions():
-    def choicePC(self):
-        self.choice_PC = random.randint(1, 3)
+    def choice_PC(self):
+        self.random_Choice_PC = random.randint(1, 3)
 
+    
 class allPages(pptFunctions):
     def __init__(self):
         self.page_All = Tk()
@@ -33,13 +34,14 @@ class allPages(pptFunctions):
         self.play_First_Page_Button.destroy()
 
         self.button_Game_Page()
+        self.label_Game_Page()
 
     def button_Game_Page(self):
 
         self.rock_Button = Button(
             self.page_All, 
             text='P E D R A', 
-            command=quit,
+            command=self.user_Rock,
             width=18,
             height=7
         )
@@ -64,7 +66,49 @@ class allPages(pptFunctions):
         self.cramp_Button.place(x=20, y=430)
 
     def label_Game_Page(self):
-        pass
+
+        self.choice_PC_label = Label(
+            self.page_All,
+            text='',
+            width=18,
+            height=7,
+            background='gray'
+            )
+        self.choice_PC_label.place(x=410, y=230)
+    
+    def user_Rock(self):
+    
+        self.choice_PC()
+        if self.random_Choice_PC == 1:
+            self.choice_PC_label.destroy()
+            self.choice_PC_label = Label(
+                self.page_All,
+                text='PEDRA',
+                width=18,
+                height=7,
+            )
+            self.choice_PC_label.place(x=410, y=230)
+        
+        elif self.random_Choice_PC == 2:
+            self.choice_PC_label.destroy()
+            self.choice_PC_label = Label(
+                self.page_All,
+                text='PAPEL',
+                width=18,
+                height=7,
+            )
+            self.choice_PC_label.place(x=410, y=230)
+
+        else:
+            self.choice_PC_label.destroy()
+            self.choice_PC_label = Label(
+                self.page_All,
+                text='TESOURA',
+                width=18,
+                height=7,
+            )
+            self.choice_PC_label.place(x=410, y=230)
+            
 
 
 
