@@ -8,6 +8,8 @@ class pptFunctions():
     
 class allPages(pptFunctions):
     def __init__(self):
+        self.score_Pc = 0
+        self.score_client = 0
         self.page_All = Tk()
         self.page_All.geometry('600x700')
         self.page_All.config(background='gray')
@@ -75,6 +77,12 @@ class allPages(pptFunctions):
             background='gray'
             )
         self.choice_PC_label.place(x=410, y=230)
+        
+        self.score_Label = Label(
+            text='YOU {} X {} PC'.format(self.score_client, self.score_Pc),
+            background='gray'
+        )
+        self.score_Label.place(x=210, y=580)
     
     def user_Rock(self):
     
@@ -91,6 +99,8 @@ class allPages(pptFunctions):
         
         elif self.random_Choice_PC == 2:
             self.choice_PC_label.destroy()
+            self.score_Label.destroy()
+
             self.choice_PC_label = Label(
                 self.page_All,
                 text='PAPEL',
@@ -98,9 +108,20 @@ class allPages(pptFunctions):
                 height=7,
             )
             self.choice_PC_label.place(x=410, y=230)
+            self.score_Pc = self.score_Pc + 1
+
+            self.score_Label = Label(
+            text='YOU {} X {} PC'.format(self.score_client, self.score_Pc),
+            background='gray'
+        )
+            self.score_Label.place(x=210, y=580)
+
 
         else:
+
             self.choice_PC_label.destroy()
+            self.score_Label.destroy()
+
             self.choice_PC_label = Label(
                 self.page_All,
                 text='TESOURA',
@@ -108,6 +129,14 @@ class allPages(pptFunctions):
                 height=7,
             )
             self.choice_PC_label.place(x=410, y=230)
+
+            self.score_client = self.score_client + 1
+
+            self.score_Label = Label(
+            text='YOU {} X {} PC'.format(self.score_client, self.score_Pc),
+            background='gray'
+        )
+            self.score_Label.place(x=210, y=580)
             
 
 
